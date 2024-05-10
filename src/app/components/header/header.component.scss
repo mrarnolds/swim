@@ -1,0 +1,50 @@
+@use "colors";
+@use "breakpoints";
+
+:host {
+  position: sticky;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 10;
+  padding: 24px 0 32px;
+  justify-content: center;
+
+  head {
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      width: auto;
+      height: 32px;
+    }
+
+    &-text {
+      margin-left: 8px;
+      height: 18px;
+    }
+  }
+}
+
+@include breakpoints.media-breakpoint-up(sm) {
+  :host {
+    .logo {
+      &-icon {
+        height: 42px;
+      }
+
+      &-text {
+        height: 22px;
+      }
+    }
+  }
+}

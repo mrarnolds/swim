@@ -1,0 +1,18 @@
+<h3 class="title">Accounts</h3>
+<form class="form">
+  <ng-container *ngIf="isLoading">
+    <span
+      class="skeleton"
+      aria-hidden="true"
+      *ngFor="let dummy of [0, 1, 2, 3, 4]; trackBy: trackByIndex"
+    ></span>
+  </ng-container>
+
+  <ng-container *ngFor="let account of accounts; trackBy: trackById">
+    <input type="checkbox" [id]="account.id" />
+    <label class="label" [for]="account.id">
+      <span class="id">{{ account.id }}</span>
+      <span class="name">{{ account.bank }}</span>
+    </label>
+  </ng-container>
+</form>

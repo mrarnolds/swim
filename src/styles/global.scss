@@ -1,0 +1,25 @@
+@use "colors";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Set default box-sizing model.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Remove default margin.
+* {
+  margin: 0;
+}
+
+body {
+  font-weight: 400;
+  font-family: "Kulim Park", sans-serif;
+  background-color: colors.$primary-a10;
+}
