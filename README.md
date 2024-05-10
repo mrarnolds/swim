@@ -4,4 +4,4 @@ Angular v17 demo project of rxjs, scss, http and responsive layout.
 
 ## Demo
 
-Demo URL: [https://swim.attr.se/](swim.attr.se)
+Demo URL: https://swim.attr.se
