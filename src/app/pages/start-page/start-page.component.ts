@@ -7,7 +7,7 @@ import {
 import { TotalComponent } from '../../components/total/total.component';
 import { AccountsComponent } from '../../components/accounts/accounts.component';
 import { OverviewComponent } from '../../components/overview/overview.component';
-import Account from '../../models/account.interface';
+import { Account } from '../../models/account.interface';
 import { AccountService } from '../../services/account.service';
 import { finalize } from 'rxjs';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -27,7 +27,7 @@ export class StartPageComponent implements OnInit {
 
   get total(): number {
     return this.accounts.reduce((sum: number, account: Account) => {
-      return sum + account.balance;
+      return account.hidden ? sum : sum + account.balance;
     }, 0);
   }
 
@@ -49,5 +49,15 @@ export class StartPageComponent implements OnInit {
       .subscribe((response) => {
         this.accounts = response;
       });
+  }
+
+  onToggleAccount(account: Account) {
+    const accountIndex = this.accounts.findIndex(({ id }) => id === account.id);
+    const newAccounts = [...this.accounts];
+    newAccounts[accountIndex] = {
+      ...account,
+      hidden: !account.hidden,
+    };
+    this.accounts = newAccounts;
   }
 }

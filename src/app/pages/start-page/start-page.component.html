@@ -1,3 +1,9 @@
 <app-overview [accounts]="accounts" [isLoading]="isLoading"></app-overview>
-<app-accounts [accounts]="accounts" [isLoading]="isLoading"></app-accounts>
+
+<app-accounts
+  [accounts]="accounts"
+  [isLoading]="isLoading"
+  (toggleChange)="onToggleAccount($event)"
+></app-accounts>
+
 <app-total [total]="total"></app-total>

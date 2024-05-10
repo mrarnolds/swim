@@ -51,8 +51,11 @@
     }
   }
 
-  .label {
+  .account {
     position: relative;
+  }
+
+  .label {
     cursor: pointer;
     user-select: none;
     color: colors.$primary-a50;
@@ -69,6 +72,15 @@
       pointer-events: none;
       transition: all 0.1s ease-out;
     }
+
+    &.checked {
+      color: colors.$primary-a10;
+      background-color: colors.$secondary-a10;
+
+      &::before {
+        opacity: 1;
+      }
+    }
   }
 
   .id {
@@ -80,19 +92,5 @@
     font-size: 14px;
     letter-spacing: 1px;
     @include font.font-normal;
-  }
-
-  input {
-    position: absolute;
-    opacity: 0;
-  }
-
-  input:checked + label {
-    color: colors.$primary-a10;
-    background-color: colors.$secondary-a10;
-
-    &::before {
-      opacity: 1;
-    }
   }
 }

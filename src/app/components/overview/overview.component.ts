@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import Account from '../../models/account.interface';
+import { Account } from '../../models/account.interface';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
 
@@ -15,9 +15,13 @@ export class OverviewComponent {
   @Input() isLoading = false;
   @Input() accounts: Array<Account> = [];
 
+  get filteredAccounts() {
+    return this.accounts.filter(({ hidden }) => !hidden);
+  }
+
   private get total(): number {
     return this.accounts.reduce((sum: number, account: Account) => {
-      return sum + account.balance;
+      return account.hidden ? sum : sum + account.balance;
     }, 0);
   }
 

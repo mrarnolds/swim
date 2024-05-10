@@ -8,11 +8,17 @@
     ></span>
   </ng-container>
 
-  <ng-container *ngFor="let account of accounts; trackBy: trackById">
-    <input type="checkbox" [id]="account.id" />
-    <label class="label" [for]="account.id">
+  <div class="account" *ngFor="let account of accounts; trackBy: trackById">
+    <label
+      class="label"
+      [class.checked]="account.hidden"
+      role="checkbox"
+      tabindex="0"
+      (click)="toggleValue(account)"
+      (keydown.enter)="toggleValue(account)"
+    >
       <span class="id">{{ account.id }}</span>
       <span class="name">{{ account.bank }}</span>
     </label>
-  </ng-container>
+  </div>
 </form>

@@ -7,7 +7,7 @@
       [style.height.%]="getPercentage(account)"
       [attr.data-label]="account.id"
       [attr.data-value]="account.balance | number"
-      *ngFor="let account of accounts"
+      *ngFor="let account of filteredAccounts"
     ></div>
   </div>
 </ng-container>
