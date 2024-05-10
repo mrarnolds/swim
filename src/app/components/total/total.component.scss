@@ -1,0 +1,22 @@
+@use "font";
+@use "colors";
+
+:host {
+  .title {
+    margin: 0 0 12px;
+    color: colors.$primary-a70;
+    @include font.font-bold;
+  }
+
+  .value {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background-color: colors.$primary-a50;
+    padding: 0 16px;
+    min-height: 80px;
+    color: colors.$primary-a0;
+    font-size: 36px;
+    @include font.font-light;
+  }
+}

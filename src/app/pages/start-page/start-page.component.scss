@@ -1,0 +1,28 @@
+@use "breakpoints";
+
+:host {
+  display: grid;
+  max-width: 960px;
+  justify-content: center;
+  grid-template-columns: 100%;
+  gap: 32px;
+}
+
+@include breakpoints.media-breakpoint-up(sm) {
+  :host {
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr;
+
+    app-total {
+      order: 1;
+    }
+    app-accounts {
+      order: 2;
+    }
+
+    app-overview {
+      order: 3;
+      grid-column: span 2;
+    }
+  }
+}

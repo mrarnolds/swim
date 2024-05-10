@@ -1,0 +1,85 @@
+@use "font";
+@use "colors";
+@use "breakpoints";
+
+:host {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: colors.$primary-a50;
+
+  .title {
+    margin: 0 0 24px;
+    color: colors.$primary-a0;
+    @include font.font-normal;
+  }
+
+  .chart {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: auto auto auto auto auto;
+    align-items: flex-end;
+    height: 140px;
+    color: colors.$primary-a0;
+    font-size: 14px;
+    padding: 0 0 20px;
+    @include font.font-bold;
+
+    &.loading,
+    &.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      @include font.font-light;
+    }
+  }
+
+  .bar {
+    position: relative;
+    background-color: colors.$secondary-a50;
+    border-radius: 4px;
+
+    &::after {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 4px 0 0;
+      text-align: center;
+      transform: translateY(100%);
+      content: attr(data-label);
+    }
+  }
+}
+
+@include breakpoints.media-breakpoint-up(sm) {
+  :host {
+    .chart {
+      height: 280px;
+      padding: 20px 78px;
+    }
+
+    .bar {
+      &::before {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        padding: 0 0 4px;
+        text-align: center;
+        transform: translateY(-100%);
+        color: colors.$primary-a20;
+        content: attr(data-value);
+        @include font.font-light;
+        transition: all 0.1s ease-out;
+        letter-spacing: 1px;
+      }
+
+      &:hover {
+        &::before {
+          color: colors.$primary-a0;
+        }
+      }
+    }
+  }
+}

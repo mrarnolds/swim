@@ -1,0 +1,24 @@
+<h3 class="title">Accounts</h3>
+<form class="form">
+  <ng-container *ngIf="isLoading">
+    <span
+      class="skeleton"
+      aria-hidden="true"
+      *ngFor="let dummy of [0, 1, 2, 3, 4]; trackBy: trackByIndex"
+    ></span>
+  </ng-container>
+
+  <div class="account" *ngFor="let account of accounts; trackBy: trackById">
+    <label
+      class="label"
+      [class.checked]="account.hidden"
+      role="checkbox"
+      tabindex="0"
+      (click)="toggleValue(account)"
+      (keydown.enter)="toggleValue(account)"
+    >
+      <span class="id">{{ account.id }}</span>
+      <span class="name">{{ account.bank }}</span>
+    </label>
+  </div>
+</form>

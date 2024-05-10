@@ -1,0 +1,96 @@
+@use "font";
+@use "colors";
+
+:host {
+  .title {
+    margin: 0 0 12px;
+    color: colors.$primary-a70;
+    @include font.font-bold;
+  }
+
+  .form {
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    background-color: colors.$secondary-a50;
+    padding: 0 16px;
+    min-height: 80px;
+    gap: 10px;
+  }
+
+  .label,
+  .skeleton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 8px;
+  }
+
+  .skeleton {
+    background-color: colors.$secondary-a10;
+
+    &::before,
+    &::after {
+      content: "";
+      border-radius: 4px;
+      display: block;
+      height: 16px;
+      background-color: colors.$secondary-a20;
+    }
+
+    &::before {
+      width: 16px;
+      margin: 0 0 4px;
+    }
+
+    &::after {
+      width: 32px;
+    }
+  }
+
+  .account {
+    position: relative;
+  }
+
+  .label {
+    cursor: pointer;
+    user-select: none;
+    color: colors.$primary-a50;
+    background-color: colors.$primary-a0;
+    transition: all 0.1s ease-out;
+
+    &:before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: url("/assets/eye.svg") no-repeat center center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.1s ease-out;
+    }
+
+    &.checked {
+      color: colors.$primary-a10;
+      background-color: colors.$secondary-a10;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+  }
+
+  .id {
+    font-size: 20px;
+    @include font.font-semibold;
+  }
+
+  .name {
+    font-size: 14px;
+    letter-spacing: 1px;
+    @include font.font-normal;
+  }
+}
