@@ -19,6 +19,10 @@ export class OverviewComponent {
     return this.accounts.filter(({ hidden }) => !hidden);
   }
 
+  get areAllHidden() {
+    return this.filteredAccounts.length === 0 && this.accounts.length > 0;
+  }
+
   private get total(): number {
     return this.accounts.reduce((sum: number, account: Account) => {
       return account.hidden ? sum : sum + account.balance;
@@ -26,7 +30,6 @@ export class OverviewComponent {
   }
 
   getPercentage(account: Account) {
-    const percent = Math.round((account.balance / this.total) * 100);
-    return percent;
+    return Math.round((account.balance / this.total) * 100);
   }
 }

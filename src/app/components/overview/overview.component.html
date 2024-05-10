@@ -1,7 +1,7 @@
 <h3 class="title">Account comparison</h3>
 
 <ng-container *ngIf="!isLoading; else showLoader">
-  <div class="chart">
+  <div class="chart" [class.empty]="areAllHidden">
     <div
       class="bar"
       [style.height.%]="getPercentage(account)"
@@ -9,6 +9,7 @@
       [attr.data-value]="account.balance | number"
       *ngFor="let account of filteredAccounts"
     ></div>
+    <p *ngIf="areAllHidden">All accounts are hidden</p>
   </div>
 </ng-container>
 

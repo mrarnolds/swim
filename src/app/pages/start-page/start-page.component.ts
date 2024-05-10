@@ -52,7 +52,12 @@ export class StartPageComponent implements OnInit {
   }
 
   onToggleAccount(account: Account) {
+    if (!this.accounts) {
+      return;
+    }
+
     const accountIndex = this.accounts.findIndex(({ id }) => id === account.id);
+
     const newAccounts = [...this.accounts];
     newAccounts[accountIndex] = {
       ...account,
