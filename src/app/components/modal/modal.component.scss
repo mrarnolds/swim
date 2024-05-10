@@ -1,0 +1,56 @@
+@use "colors";
+@use "breakpoints";
+
+:host {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: #000000, $alpha: 0.25);
+
+  .wrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 32px;
+    background-color: colors.$primary-a0;
+  }
+
+  .content {
+    padding: 42px 0 0 0;
+  }
+
+  .close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 42px;
+    height: 42px;
+    display: block;
+    background-color: colors.$primary-a0;
+    border-radius: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@include breakpoints.media-breakpoint-up(sm) {
+  :host {
+    padding: 32px;
+
+    .wrapper {
+      width: auto;
+      max-width: 960px;
+      height: auto;
+      min-height: 200px;
+      border-radius: 16px;
+    }
+  }
+}

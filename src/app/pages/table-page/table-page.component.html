@@ -1,0 +1,22 @@
+<table *ngIf="!isLoading; else showLoader">
+  <thead>
+    <th>#</th>
+    <th>Account Id</th>
+    <th>Bank</th>
+    <th>Balance</th>
+    <th>Currency</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let account of accounts">
+      <td>{{ account.id }}</td>
+      <td>{{ account.accountId }}</td>
+      <td>{{ account.bank }}</td>
+      <td>{{ account.balance | number }}</td>
+      <td>{{ account.currency }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #showLoader>
+  <div class="loader"><app-loader /></div>
+</ng-template>
