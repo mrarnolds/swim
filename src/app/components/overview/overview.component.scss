@@ -7,6 +7,29 @@
   border-radius: 12px;
   background-color: colors.$primary-a50;
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .link {
+    height: 32px;
+    padding: 0 16px;
+    color: colors.$primary-a0;
+    border: 1px solid colors.$primary-a20;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    @include font.font-light;
+    transition: all 0.1s ease-out;
+
+    &:hover {
+      background-color: colors.$primary-a30;
+    }
+  }
+
   .title {
     margin: 0 0 24px;
     color: colors.$primary-a0;

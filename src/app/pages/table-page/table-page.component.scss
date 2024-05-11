@@ -21,10 +21,23 @@
     background-color: colors.$primary-a10;
 
     th {
+      cursor: pointer;
       white-space: nowrap;
       text-align: left;
-      padding: 16px 8px;
+      user-select: none;
       @include font.font-semibold;
+
+      &:after {
+        display: inline-block;
+        content: "";
+        width: 12px;
+        height: 12px;
+        margin-left: 4px;
+        background: url("../../../assets/arrow.svg") no-repeat center
+          center/contain;
+        visibility: hidden;
+        opacity: 0.5;
+      }
     }
   }
 
@@ -36,7 +49,22 @@
 
   th,
   td {
-    padding: 8px;
+    padding: 16px 16px 16px 8px;
+  }
+
+  thead {
+    .asc,
+    .desc {
+      &:after {
+        visibility: visible;
+      }
+    }
+
+    .desc {
+      &:after {
+        transform: scaleY(-1);
+      }
+    }
   }
 }
 

@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Account } from '../../models/account.interface';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from '../loader/loader.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-overview',
   standalone: true,
-  imports: [CommonModule, LoaderComponent],
+  imports: [CommonModule, LoaderComponent, RouterLink],
   templateUrl: './overview.component.html',
   styleUrl: './overview.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
