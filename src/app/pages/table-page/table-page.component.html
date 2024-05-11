@@ -1,10 +1,45 @@
 <table *ngIf="!isLoading; else showLoader">
   <thead>
-    <th>#</th>
-    <th>Account Id</th>
-    <th>Bank</th>
-    <th>Balance</th>
-    <th>Currency</th>
+    <th
+      [class]="getSortingClass('id')"
+      (click)="onClickToggleSortBy('id')"
+      (keydown.enter)="onClickToggleSortBy('id')"
+      tabindex="0"
+    >
+      #
+    </th>
+    <th
+      [class]="getSortingClass('accountId')"
+      (keydown.enter)="onClickToggleSortBy('accountId')"
+      (click)="onClickToggleSortBy('accountId')"
+      tabindex="0"
+    >
+      Account Id
+    </th>
+    <th
+      [class]="getSortingClass('bank')"
+      (click)="onClickToggleSortBy('bank')"
+      (keydown.enter)="onClickToggleSortBy('bank')"
+      tabindex="0"
+    >
+      Bank
+    </th>
+    <th
+      [class]="getSortingClass('balance')"
+      (click)="onClickToggleSortBy('balance')"
+      (keydown.enter)="onClickToggleSortBy('balance')"
+      tabindex="0"
+    >
+      Balance
+    </th>
+    <th
+      [class]="getSortingClass('currency')"
+      (click)="onClickToggleSortBy('currency')"
+      (keydown.enter)="onClickToggleSortBy('currency')"
+      tabindex="0"
+    >
+      Currency
+    </th>
   </thead>
   <tbody>
     <tr *ngFor="let account of accounts">

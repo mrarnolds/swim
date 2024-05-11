@@ -1,4 +1,9 @@
-<h3 class="title">Account comparison</h3>
+<div class="header">
+  <h3 class="title">Account comparison</h3>
+  <a class="link" [routerLink]="['', { outlets: { modal: 'table' } }]">
+    Details Table
+  </a>
+</div>
 
 <ng-container *ngIf="!isLoading; else showLoader">
   <div class="chart" [class.empty]="areAllHidden">
