@@ -19,7 +19,8 @@
   table {
     width: 100%;
     font-size: 16px;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
   }
 
   thead {
@@ -63,12 +64,14 @@
 
   th,
   td {
-    padding: 16px 16px 16px 8px;
+    padding: 16px;
 
     &:first-child {
       position: sticky;
       left: 0;
       z-index: 2;
+      border-right: 1px solid rgba($color: #000000, $alpha: 0.1);
+      @include font.font-semibold;
     }
   }
 
@@ -93,5 +96,12 @@
     display: block;
     min-height: 300px;
     min-width: 400px;
+
+    th,
+    td {
+      &:first-child {
+        border-right: none;
+      }
+    }
   }
 }
