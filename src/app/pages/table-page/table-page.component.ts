@@ -23,8 +23,8 @@ type AccountField = keyof Omit<Account, 'hidden'>;
 export class TablePageComponent implements OnInit {
   isLoading = true;
 
-  sortBy?: AccountField;
-  orderBy?: OrderBy;
+  sortBy?: AccountField | null;
+  orderBy?: OrderBy | null;
 
   get accounts() {
     const sorted = [...this.response];
@@ -55,6 +55,30 @@ export class TablePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.fetchData();
+    this.loadLocalStorage();
+  }
+
+  /** Toggle sorting between ascending, descending and none */
+  onClickToggleSortBy(field: AccountField) {
+    if (this.sortBy !== field) {
+      this.sortBy = field;
+      this.orderBy = 'asc';
+    } else if (this.orderBy === 'asc') {
+      this.orderBy = 'desc';
+    } else if (this.orderBy === 'desc') {
+      this.orderBy = null;
+      this.sortBy = null;
+    }
+    this.updateLocalStorage();
+  }
+
+  /** Apply sorting css if same field */
+  getSortingClass(field: AccountField) {
+    return field === this.sortBy ? this.orderBy : null;
+  }
+
+  private fetchData() {
     this.accountService
       .getAllAccounts('SEK')
       .pipe(
@@ -67,21 +91,28 @@ export class TablePageComponent implements OnInit {
       .subscribe((response) => (this.response = response));
   }
 
-  /** Toggle sorting between ascending, descending and none */
-  onClickToggleSortBy(field: AccountField) {
-    if (this.sortBy !== field) {
-      this.sortBy = field;
-      this.orderBy = 'asc';
-    } else if (this.orderBy === 'asc') {
-      this.orderBy = 'desc';
-    } else if (this.orderBy === 'desc') {
-      this.orderBy = undefined;
-      this.sortBy = undefined;
-    }
+  /**
+   * Load sorting and order from localStorage
+   */
+  private loadLocalStorage() {
+    this.sortBy = localStorage.getItem('sortBy') as AccountField;
+    this.orderBy = localStorage.getItem('orderBy') as OrderBy;
   }
 
-  /** Apply sorting css if same field */
-  getSortingClass(field: AccountField) {
-    return field === this.sortBy ? this.orderBy : null;
+  /**
+   * Save sorting and order to localStorage
+   */
+  private updateLocalStorage() {
+    if (this.sortBy) {
+      localStorage.setItem('sortBy', this.sortBy);
+    } else {
+      localStorage.removeItem('sortBy');
+    }
+
+    if (this.orderBy) {
+      localStorage.setItem('orderBy', this.orderBy);
+    } else {
+      localStorage.removeItem('orderBy');
+    }
   }
 }

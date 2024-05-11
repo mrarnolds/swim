@@ -11,6 +11,11 @@
     justify-content: center;
   }
 
+  .wrapper {
+    margin: 0 -16px;
+    overflow-x: auto;
+  }
+
   table {
     width: 100%;
     font-size: 16px;
@@ -18,14 +23,13 @@
   }
 
   thead {
-    background-color: colors.$primary-a10;
-
     th {
       cursor: pointer;
       white-space: nowrap;
       text-align: left;
       user-select: none;
       @include font.font-semibold;
+      background-color: colors.$primary-a10;
 
       &:after {
         display: inline-block;
@@ -43,13 +47,29 @@
 
   tr {
     &:nth-child(even) {
-      background-color: colors.$secondary-a10;
+      td,
+      th {
+        background-color: colors.$secondary-a10;
+      }
+    }
+
+    &:nth-child(odd) {
+      td,
+      th {
+        background-color: colors.$primary-a0;
+      }
     }
   }
 
   th,
   td {
     padding: 16px 16px 16px 8px;
+
+    &:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+    }
   }
 
   thead {

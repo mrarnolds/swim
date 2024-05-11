@@ -16,12 +16,12 @@
     position: relative;
     height: 100%;
     width: 100%;
-    padding: 32px;
+    padding: 16px;
     background-color: colors.$primary-a0;
   }
 
   .content {
-    padding: 42px 0 0 0;
+    padding: 58px 0 0 0;
   }
 
   .close {
@@ -51,6 +51,7 @@
       height: auto;
       min-height: 200px;
       border-radius: 16px;
+      padding: 32px;
     }
   }
 }
